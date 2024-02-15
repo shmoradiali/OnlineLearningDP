@@ -36,7 +36,6 @@ class BinaryTreeMechanism:
     def _update(self, t, val, cur) -> None:
         if cur is None or t < cur.interval[0] or t >= cur.interval[1]:
             return
-#        print(f"Updating node [{cur.interval[0]}, {cur.interval[1]})")
         cur.value += val - self.array[t]
         self._update(t, val, cur.left_child)
         self._update(t, val, cur.right_child)
@@ -51,11 +50,6 @@ class BinaryTreeMechanism:
 
     def _get_partial_sum(self, t, cur):
         if cur.interval[1] <= t:
-#            print("--------")
-#            print(f"On node [{cur.interval[0]}, {cur.interval[1]}) sum is: ")
-#            print(cur.value)
-#            print(cur.noise)
-#            print("--------")
             return cur.value + cur.noise
         if cur is None or cur.interval[0] >= t:
             return np.zeros(self.dim)

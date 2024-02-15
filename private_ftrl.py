@@ -17,7 +17,6 @@ class AgarwalSinghPrivateFTRL:
             self.L += get_noise_vector(dim, D)
     
     def predict(self, t):
-#        print(f"We have self.L={self.L}")
         return self.oracle(self.L, self.rate)
     
     def observe_loss(self, t, l_t):

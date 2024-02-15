@@ -90,9 +90,6 @@ def simulate(dim, T, A, adv):
     for t in range(1, T + 1):
         x_t = A.predict(t)
         l_t = adv(x_t)
-#        print(f"Round {t}: l_t . x_t={np.dot(l_t, x_t)}")
-#        print(x_t)
-#        print(l_t)
         ls.append(l_t)
         cost += np.dot(x_t, l_t)
         A.observe_loss(t, l_t)
@@ -143,7 +140,6 @@ if __name__ == "__main__":
             print("")
             for _ in range(reps):
                 A = AgarwalSinghPrivateFTRL(dim, T, D_lap, oracle_ftrl, eta_ftrl)
-#                print("Simulating FTRL")
                 regret_A = simulate(dim, T, A, adversary)
                 avg_regret_ftrl += regret_A
 
